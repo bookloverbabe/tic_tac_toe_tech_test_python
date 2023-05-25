@@ -36,6 +36,7 @@ Data kept in memory and updated with each move
 3. The program creates a grid comprised of 3 by 3 squares.
 4. The program asks each player to place their marker in an empty square, with one marker per input.
 5. The game ends when a marker creates an unbroken line of 3, or all of the sqaures are filled. Program responds with Player_ has won or it is a draw.
+Extra: if there is time, create a class that keeps each players score from each game, and allows them to choose their own name, i.e they play 3 games, John: 2, Amy: 1.
 
 # Edge cases
 ## Wrong data types
