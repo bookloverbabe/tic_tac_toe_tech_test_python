@@ -1,15 +1,20 @@
 # This class creates the grid for the game, consists of three rows of three, use a disctionary to 
 # assign a number to each square. Dictionary is a key value pair, like hash in Ruby.
-from tests.test_board import *
-
-board = {'7': ' ' , '8': ' ' , '9': ' ' ,
+class Board():
+    def __init__(board):
+        grid = {'7': ' ' , '8': ' ' , '9': ' ' ,
             '4': ' ' , '5': ' ' , '6': ' ' ,
             '1': ' ' , '2': ' ' , '3': ' ' }
 
-class Board:
-    def printBoard(board):
-        print(board['7'] + '|' + board['8'] + '|' + board['9'])
+    def printBoard(grid):
+        print(grid['7'] + '|' + grid['8'] + '|' + grid['9'])
         print('-+-+-')
-        print(board['4'] + '|' + board['5'] + '|' + board['6'])
+        print(grid['4'] + '|' + grid['5'] + '|' + grid['6'])
         print('-+-+-')
-        print(board['1'] + '|' + board['2'] + '|' + board['3'])
+        print(grid['1'] + '|' + grid['2'] + '|' + grid['3'])
+
+BoardObject = Board
+grid = {'7': ' ' , '8': ' ' , '9': ' ' ,
+            '4': ' ' , '5': ' ' , '6': ' ' ,
+            '1': ' ' , '2': ' ' , '3': ' ' }
+Board.printBoard(grid)
