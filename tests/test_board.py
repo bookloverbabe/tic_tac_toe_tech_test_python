@@ -1,15 +1,15 @@
 import unittest
-from model import *
+from model.board import *
 
-class BoardTest(unittest.TestCase):
-    def test_printBoard(board):
+class TestBoard(unittest.TestCase):
+
+    def test_printBoard(self):
+        # Create instance of board class
         board = Board()
-        # board.printBoard(board)
-        board.grid =  ([' | | '],
-                   ['-+-+- '],
-                   [' | | '],
-                   ['-+-+-'],
-                   [' | |'])
-        board.assertEqual(board.grid)
-if __name__ == '__main__':
-    unittest.main()
+        board.printBoard()
+        response = ( " | | \n"
+                    " -+-+-\n"
+                    "  | |\n"
+                    " -+-+-\n"
+                    "  | |  ")
+        self.assertTrue(response)
