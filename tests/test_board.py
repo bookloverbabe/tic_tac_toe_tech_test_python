@@ -12,4 +12,6 @@ class TestBoard(unittest.TestCase):
                     "  | |\n"
                     " -+-+-\n"
                     "  | |  ")
+        false_response = (" ")
         self.assertTrue(response)
+        self.assertNotEqual(response, false_response)
