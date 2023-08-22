@@ -3,7 +3,7 @@
 # import board
 class Game():
     # def __init__(self):
-    #     board = Board()
+        # self.board = board
 
     def intro(self):
         # Create players 1 and 2
