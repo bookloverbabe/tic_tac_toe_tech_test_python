@@ -13,6 +13,7 @@ class Game():
 
     def play(self):    
         for i in range(9):
+            # Import and use printBoard from board class
             board = Board()
             board.printBoard()
     

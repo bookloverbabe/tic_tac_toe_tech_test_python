@@ -13,6 +13,13 @@ class TestGame(unittest.TestCase):
     def test_play(self):
         game = Game()
         game.play()
-        
+        response = ( " | | \n"
+                    " -+-+-\n"
+                    "  | |\n"
+                    " -+-+-\n"
+                    "  | |  ")
+        self.assertTrue(response)
+
+
 
     
