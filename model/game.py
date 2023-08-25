@@ -30,9 +30,12 @@ class Game():
             if move in board.grid and board.grid[move] == ' ':
                 board.grid[move] = player
             else:
-                print('Invalid move. Try again.')
+                print('Oops! This space is taken, try again')
                 continue
             # If either player 1 or 2 have three adjoining places, they win
+            for row in range(len(grid)):
+                for column in range(len(grid)):
+                    print(f'Player {player} is the winner!')
 
             # If there has been nine moves and no winner, declare a tie
             

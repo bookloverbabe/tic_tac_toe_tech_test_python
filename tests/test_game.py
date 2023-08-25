@@ -30,7 +30,18 @@ class TestGame(unittest.TestCase):
                                    " -+-+-\n"
                                    "  | |\n"
                                    " -+-+-\n"
-                                   "  | |O  ")
+                                   "  | |O ") 
+        # Mock input where player is decleared a winner
+        # game = Game()
+        # game.play()
+        self.assertTrue('Player one is the winner!')
+        with patch.dict(board_two, {'1': 'X', '2':'X', '3': 'X'}) as patched_board_two:
+            assert patched_board_two == (" | | \n"
+                                    " -+-+-\n"
+                                    "  | |\n"
+                                    " -+-+-\n"
+                                    " X|X|X") 
+
 
 
 
