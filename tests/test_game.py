@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from model.game import *
 from model.board import *
 
@@ -19,6 +20,20 @@ class TestGame(unittest.TestCase):
                     " -+-+-\n"
                     "  | |  ")
         self.assertTrue(response)
+        response_two = ('Player 1, you will go first. Remember, that your symbol is X')
+        self.assertTrue(response_two)
+        # Mock input to test validation and update of board. Use patch.dict() to patch the dictionary
+        game = Game()
+        game.play()
+        with patch.dict(board, {'7': 'X', '3': 'O'}) as patched_board:
+            assert patched_board == ( "X| | \n"
+                                   " -+-+-\n"
+                                   "  | |\n"
+                                   " -+-+-\n"
+                                   "  | |O  ")
+
+
+
 
 
 
