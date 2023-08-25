@@ -9,3 +9,10 @@ class TestGame(unittest.TestCase):
         game.intro()
         response = 'Welcome to tic tac toe! Player 1 will play with X and player 2 will play with 0'
         self.assertTrue(response)
+    
+    def test_play(self):
+        game = Game()
+        game.play()
+        
+
+    
