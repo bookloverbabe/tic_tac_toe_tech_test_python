@@ -1,6 +1,6 @@
 # Created board, now need to create players X and O, who can insert into board
 # If players meet certain patterns, they win.
-from .board import *
+from model.board import Board
 
 class Game():
     def __init__(self):

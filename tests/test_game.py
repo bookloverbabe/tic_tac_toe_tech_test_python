@@ -1,46 +1,46 @@
 import unittest
 from unittest.mock import patch
-from model.game import *
-from model.board import *
+from model.game import Game
 
 class TestGame(unittest.TestCase):
 
     def test_intro(self):
         game = Game()
-        game.intro()
-        response = 'Welcome to tic tac toe! Player 1 will play with X and player 2 will play with 0'
-        self.assertTrue(response)
-    
+        with patch('builtins.print') as mock_print:
+            game.intro()
+            mock_print.assert_called_with('Welcome to tic tac toe! Player 1 will play with X and player 2 will play with 0')
+
     def test_play(self):
-        game = Game()
-        game.play()
-        response = ( " | | \n"
-                    " -+-+-\n"
-                    "  | |\n"
-                    " -+-+-\n"
-                    "  | |  ")
-        self.assertTrue(response)
-        response_two = ('Player 1, you will go first. Remember, that your symbol is X')
-        self.assertTrue(response_two)
-        # Mock input to test validation and update of board. Use patch.dict() to patch the dictionary
-        game = Game()
-        game.play()
-        with patch.dict(board, {'7': 'X', '3': 'O'}) as patched_board:
-            assert patched_board == ( "X| | \n"
-                                   " -+-+-\n"
-                                   "  | |\n"
-                                   " -+-+-\n"
-                                   "  | |O ") 
-        # Mock input where player is decleared a winner
-        # game = Game()
-        # game.play()
-        self.assertTrue('Player one is the winner!')
-        with patch.dict(board_two, {'1': 'X', '2':'X', '3': 'X'}) as patched_board_two:
-            assert patched_board_two == (" | | \n"
-                                    " -+-+-\n"
-                                    "  | |\n"
-                                    " -+-+-\n"
-                                    " X|X|X") 
+        # Test the play method
+        with patch('builtins.print') as mock_print:
+            # Use patch to mock user input
+            with patch('builtins.input', side_effect=['1', '2', '3', '4', '5', '6', '7', '8', '9']):
+                game = Game()
+                game.play()
+
+                # Now, you can assert that the expected print statements were called
+                expected_output = [
+                    " | | ",
+                    "-+-+-",
+                    " | | ",
+                    "-+-+-",
+                    " | | ",
+                    "Player X, it's your turn. Enter a position (1 to 9): ",
+                    " | | ",
+                    "-+-+-",
+                    " | | ",
+                    "-+-+-",
+                    " | | ",
+                    "Player O, it's your turn. Enter a position (1 to 9): ",
+                    # ... and so on
+                ]
+                for call_args in mock_print.call_args_list:
+                    printed_output = call_args[0][0]
+                    self.assertEqual(printed_output, expected_output.pop(0))
+
+if __name__ == '__main__':
+    unittest.main()
+
 
 
 
