@@ -20,20 +20,14 @@ class TestGame(unittest.TestCase):
 
                 # Now, you can assert that the expected print statements were called
                 expected_output = [
-                    " | | ",
-                    "-+-+-",
-                    " | | ",
-                    "-+-+-",
-                    " | | ",
-                    "Player X, it's your turn. Enter a position (1 to 9): ",
-                    " | | ",
-                    "-+-+-",
-                    " | | ",
-                    "-+-+-",
-                    " | | ",
-                    "Player O, it's your turn. Enter a position (1 to 9): ",
-                    # ... and so on
-                ]
+                   'Welcome to tic tac toe! Player 1 will play with X and player 2 will play with 0'
+                   ' | | '
+                   '-+-+-'
+                   ' | | '
+                   '-+-+-'
+                   ' | | '
+                   "Player X, its your turn. Enter a position (1 to 9):"
+                   ]
                 # This iterates over the mock_print function, to ensure that the correct output
                 # is made at the correct point of the game
 

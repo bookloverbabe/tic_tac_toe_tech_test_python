@@ -1,7 +1,7 @@
 # Created board, now need to create players X and O, who can insert into board
 # If players meet certain patterns, they win.
-from board import Board
-# from model.board import Board
+# from board import Board
+from model.board import Board
 
 class Game():
     def __init__(self):
@@ -28,6 +28,7 @@ class Game():
             move = input()
             # This block checks if the position that the player chooses is empty
             if self.validate_move(move, player_current):
+                #  Sets the position specified by move on the game board to the current player's symbol (player_current).
                 self.board.grid[move] = player_current
             else:
                 print('Oops! This space is taken or the input is invalid. Try again.')
@@ -64,9 +65,11 @@ class Game():
         return False  # Indicates the game is not won yet
 
     def check_tie(self):
+        # This checks that there are no longer any empty spaces on the board
+        # .values() is a method used to retrieve all the values (contents of cells) from the self.board.grid dictionary.
         return ' ' not in self.board.grid.values()
     
-# The main function here runs the program
+# The main function here runs the program, starts gmae class and then all of the methods that run the program
 def main():
     game = Game()
     game.intro()
