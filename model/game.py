@@ -14,8 +14,8 @@ class Game():
         print('Welcome to tic tac toe! Player 1 will play with X and player 2 will play with 0')
 
     def play(self):  
-        # Create board class outside loop
-        # Instance variable, , which are initialized in the __init__ method of the Game class
+        # Instance variable of board, which is initialized in the __init__ method of the Game class
+        # Entire play method switches between players one and two, and checks that the space is empty and for a win or a tie
         for i in range(9):
             self.board.printBoard()
             # If i, which represents each turn, returns a modulo 0f 0 i.e an even number of turns, it is player ones turn. Remember than sequences run from 0 to 8.
@@ -26,20 +26,20 @@ class Game():
 
             print (f"Player {player_current}, it's your turn. Enter a position (1 to 9): ")
             move = input()
-            # Validate and update each move onto the board. board.grid represents dictionary that contains the board
-            # move in board.grid checks whether the provided move corresponds to a valid position on the game board. First line checks if the move is empty
-            # If true, board.grid[move] = player assigns players symbol to board, [] used to access elements in dictionary
+            # This block checks if the position that the player chooses is empty
             if self.validate_move(move, player_current):
                 self.board.grid[move] = player_current
             else:
                 print('Oops! This space is taken or the input is invalid. Try again.')
                 continue
 
+            # Checks for a winner
             if self.check_winner(player_current):
                 self.board.printBoard()
                 print(f"Player {player_current} is the winner!")
                 return
             
+            # Checks for a tie
             if self.check_tie():
                 self.board.printBoard()
                 print("It's a tie!")
