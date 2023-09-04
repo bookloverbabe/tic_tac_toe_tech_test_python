@@ -63,6 +63,24 @@ class TestGame(unittest.TestCase):
                 for call_args in mock_print.call_args_list:
                     printed_output_two = call_args[0][0]
                     self.assertEqual(printed_output_two, expected_output_two.pop(0))
+    
+    def test_tie(self):
+                # Test the play method
+        with patch('builtins.print') as mock_print:
+            # Use patch to mock user input
+            with patch('builtins.input', side_effect=['[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]']):
+                game = Game()
+                game.win()
+                expected_output_two = [                    
+                    "X| | ",
+                    "-+-+-",
+                    "0|X | ",
+                    "-+-+-",
+                    "X| | ",]
+                for call_args in mock_print.call_args_list:
+                    printed_output_two = call_args[0][0]
+                    self.assertEqual(printed_output_two, expected_output_two.pop(0))
+    
 
 if __name__ == '__main__':
     unittest.main()
