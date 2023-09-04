@@ -14,8 +14,3 @@ class Board():
         print(self.grid['4'] + '|' + self.grid['5'] + '|' + self.grid['6'])
         print('-+-+-')
         print(self.grid['1'] + '|' + self.grid['2'] + '|' + self.grid['3'])
-
-# Create instance of board class
-board = Board()
-# Call the printBoard method on the board object
-board.printBoard()
