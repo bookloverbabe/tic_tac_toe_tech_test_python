@@ -13,7 +13,7 @@ class Game():
 
     def play(self):  
         # Create board class outside loop
-        board = Board()  
+        board = Board()
         for i in range(9):
             board.printBoard()
             # If i, which represents each turn, returns a modulo 0f 0 i.e an even number of turns, it is player ones turn. Remember than sequences run from 0 to 8.
@@ -32,21 +32,39 @@ class Game():
             else:
                 print('Oops! This space is taken, try again')
                 continue
-    def win(player_one, player_two, player_current):
-        # If either player 1 or 2 have three adjoining places, they win
-        win_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]  
-        # Create for loop to check if wining combinations is met
-        for x in win_combinations:
-            if all(y in player_one or player_two[player_current] for y in x):
-                print(f'Player {player_current} is the winner!')
-        return False
 
-            # If there has been nine moves and no winner, declare a tie
-            
-        
-    # Example of a tie code
-    # def tie_validate(position_player):  
-    # if len(position_player['X']) + len(position_player['O']) == 9:  
-    #     return True  
-    # return False  
+    def win(self, board, player_current):
+        win_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
+        # Pos function finds the position of a string in another string
+        # This line initiates a loop that iterates through each combo in the win_combinations list. Each combo is a 
+        # list of positions that represents a possible winning combination.
+        for combo in win_combinations:
+            # This line checks if all positions in the current combo have been filled with the symbol of the current player (player_current)
+            # [str(pos)] denotes a list or dictionary access. Here, it's used to access a 
+            # value in a dictionary using a string as the key. pos is a varialbe representing a position on the board. 
+            if all(board.grid[str(pos)] == player_current for pos in combo):
+                print(f"Player {player_current} is the winner!")
+                return True  # Indicates the game is won
+        return False  # Indicates the game is not won yet
+
+    def tie(self, board):
+        return all(board.grid[str(pos)] != ' ' for pos in range(1, 10))
     
+        # The main function here runs the program
+    def main():
+        game = Game()
+        game.intro()
+        board = Board()  # Create the board
+        player_current = game.player_one  # Start with player 1
+        for _ in range(9):  # Maximum of 9 moves
+            board.printBoard()
+            game.play(board, player_current)
+            if game.win(board, player_current):
+                break
+            if game.tie(board):
+                print("It's a tie!")
+                break
+    # This is where using the if __name__ == '__main__' code block comes in handy. Code within this block won’t run unless the module is 
+    # executed in the top-level environment.
+    if __name__ == '__main__':
+        main()

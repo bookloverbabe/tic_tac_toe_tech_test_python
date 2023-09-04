@@ -51,10 +51,15 @@ class TestGame(unittest.TestCase):
         # Test the play method
         with patch('builtins.print') as mock_print:
             # Use patch to mock user input
-            with patch('builtins_input', side_effect=['[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]']):
+            with patch('builtins.input', side_effect=['[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]']):
                 game = Game()
                 game.win()
-                expected_output_two = ['[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]']
+                expected_output_two = [                    
+                    "X| | ",
+                    "-+-+-",
+                    "X| | ",
+                    "-+-+-",
+                    "X| | ",]
                 for call_args in mock_print.call_args_list:
                     printed_output_two = call_args[0][0]
                     self.assertEqual(printed_output_two, expected_output_two.pop(0))
