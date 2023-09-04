@@ -18,24 +18,28 @@ class Game():
             board.printBoard()
             # If i, which represents each turn, returns a modulo 0f 0 i.e an even number of turns, it is player ones turn. Remember than sequences run from 0 to 8.
             if i % 2 == 0:
-                player = self.player_one
+                player_current = self.player_one
             else:
-                player = self.player_two
+                player_current = self.player_two
 
-            print(f'Player {player}, it\'s your turn. Enter a position (1 to 9): ')
+            print (f"Player {player_current}, it's your turn. Enter a position (1 to 9): ")
             move = input()
             # Validate and update each move onto the board. board.grid represents dictionary that contains the board
             # move in board.grid checks whether the provided move corresponds to a valid position on the game board. First line checks if the move is empty
             # If true, board.grid[move] = player assigns players symbol to board, [] used to access elements in dictionary
             if move in board.grid and board.grid[move] == ' ':
-                board.grid[move] = player
+                board.grid[move] = player_current
             else:
                 print('Oops! This space is taken, try again')
                 continue
-            # If either player 1 or 2 have three adjoining places, they win
-            for row in range(len(grid)):
-                for column in range(len(grid)):
-                    print(f'Player {player} is the winner!')
+    def win(player_one, player_two, player_current):
+        # If either player 1 or 2 have three adjoining places, they win
+        win_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]  
+        # Create for loop to check if wining combinations is met
+        for x in win_combinations:
+            if all(y in player_one or player_two[player_current] for y in x):
+                print(f'Player {player_current} is the winner!')
+        return False
 
             # If there has been nine moves and no winner, declare a tie
             
