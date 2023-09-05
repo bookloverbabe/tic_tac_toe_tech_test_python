@@ -50,6 +50,11 @@ class TestGame(unittest.TestCase):
 
             # Capture the actual state of the board
             actual_board_state = []
+            # Lambda is an anonymous inline function consisting of a single expression which is evaluated when the function is called
+            # side_effect is a parameter of the patch context manager that allows you to specify a 
+            # custom function to be called each time the mocked print function is called.
+            # the custom function is a lambda function that takes an argument x (which is typically what you pass to print) and appends x to the actual_board_state list. 
+            # Essentially, it captures what is being printed and stores it in actual_board_state.
             with patch('builtins.print', side_effect=lambda x: actual_board_state.append(x)):
                 game.board.printBoard()
 
@@ -62,32 +67,36 @@ class TestGame(unittest.TestCase):
             "X|O| ",
         ]
 
-           # Compare the actual and expected board states
+        # Compares the captured actual output (stored in the actual_board_state list) 
+        # with the expected output (stored in the expected_board_state list) in a unit test
+        # In zip: iterates over several iterables in parallel, producing tuples with an item from each one, e,g creates a tuple containing one
+        # from actual and expected, second tuple and so on to compare actual versus expected. 
         for actual_line, expected_line in zip(actual_board_state, expected_board_state):
+            # .strip() is used to remove any leading or trailing whitespace characters
             self.assertEqual(actual_line.strip(), expected_line.strip())
 
-    # def test_validate_move(self):
+    def test_validate_move(self):
+        # Create a game instance
+        game = Game()
 
-    
+        # Mock user input for the game (example: valid moves)
+        with patch('builtins.input', side_effect=['1', '3', '5']):
+            for _ in range(3):  # Simulate three valid moves
+                # Ensure that the input is considered valid
+                self.assertTrue(game.validate_move(input(), game.player_one))
+
+        # Now, test with invalid moves
+        with patch('builtins.input', side_effect=['1', '3', '1']):
+            for _ in range(3):  # Simulate three moves, including an invalid one
+                # Ensure that the input is considered invalid
+                self.assertFalse(game.validate_move(input(), game.player_one))
+
+
     # def test_check_winner(self):
 
     
     # def test_check_tie(self):
-    #             # Test the play method
-    #     with patch('builtins.print') as mock_print:
-    #         # Use patch to mock user input
-    #         with patch('builtins.input', side_effect=['[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]']):
-    #             game = Game()
-    #             game.win()
-    #             expected_output_two = [                    
-    #                 "X| | ",
-    #                 "-+-+-",
-    #                 "0|X | ",
-    #                 "-+-+-",
-    #                 "X| | ",]
-    #             for call_args in mock_print.call_args_list:
-    #                 printed_output_two = call_args[0][0]
-    #                 self.assertEqual(printed_output_two, expected_output_two.pop(0))
+
     
 
 if __name__ == '__main__':
