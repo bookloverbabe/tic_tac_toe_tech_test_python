@@ -49,7 +49,8 @@ class Game():
     def validate_move(self, move, player_current):
         if move in self.board.grid and self.board.grid[move] == ' ':
             return True
-        return False
+        else:
+            return False
 
     def check_winner(self, player_current):
         win_combinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
