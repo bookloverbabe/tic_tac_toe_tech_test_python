@@ -47,7 +47,7 @@ Extra: if there is time, create a class that keeps each players score from each 
 * The players places the marker in a square that already contains a marker.
 * Player doesn't make a move.
 
-![](error_message.jpg)
+![](./Images/error_message.jpg)
 
 ## Error handling
 * Ask player to input correct marker.
