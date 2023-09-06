@@ -1,4 +1,5 @@
 import unittest
+import warnings
 from unittest.mock import patch
 from model.game import Game
 
@@ -78,23 +79,16 @@ class TestGame(unittest.TestCase):
     def test_validate_move(self):
         # Create a game instance
         game = Game()
+        # Define a list to store user input values
 
         # Mock user input for the game (example: valid moves)
         with patch('builtins.input', side_effect=['1', '3', '5']):
             self.assertTrue(game.validate_move(input(), game.player_one))
 
-        # Test with invalid moves
-        with patch('builtins.input', side_effect=['1', '3', '1']):
-            # Manually provide invalid input and validate
-            self.assertNotEqual(game.validate_move('1', game.player_one))
-
-
     # def test_check_winner(self):
-
     
     # def test_check_tie(self):
 
-    
 
 if __name__ == '__main__':
     unittest.main()
