@@ -38,7 +38,7 @@ Data kept in memory and updated with each move
 5. The game ends when a marker creates an unbroken line of 3, or all of the sqaures are filled. Program responds with Player_ has won or it is a draw.
 Extra: if there is time, create a class that keeps each players score from each game, and allows them to choose their own name, i.e they play 3 games, John: 2, Amy: 1.
 
-![](./Images/Video_of_game)
+![](./Images/video_of_game.mp4)
 
 # Edge cases
 ## Wrong data types
