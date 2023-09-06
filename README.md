@@ -53,3 +53,6 @@ Extra: if there is time, create a class that keeps each players score from each 
 * Ask player to input correct marker.
 * Ask player to place their marker in an empty square.
 * Program doesn't remember a previous move.
+* In the event where all of the places are filled and there is not a winner, a tie will be declared and the program will end
+
+![](./Images/tie.jpg)
